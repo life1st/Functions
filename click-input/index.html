@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .item{padding:0 0 10px 250px; position:relative; zoom:1;}
+        .item .u-label .required{color:#f30; margin-right:5px; }
+        .u-label{float:left; padding:3px 0 0; margin-left:-225px; text-align:right; width:220px;}
+        /*关键词选择*/
+        input[name=keyWords]{min-width: 400px;max-width: 800px;}
+        .keywords{width: 700px;}
+        .keywords p{color:#e29700;margin-top: 5px;}
+        .keywords ul{width: 600px;clear:both;border:1px dashed #000;margin:8px 0 16px;padding:2px 10px; display:inline-block;height: 80px;overflow: hidden;}
+        .keywords li{display: inline-block;padding:1px 4px;margin:10px 5px;background-color:#FC6;cursor: pointer;transition: background-color .3s,color .2s;}
+        .keywords li.active {background-color: #696969;color:#fff;}
+        .keywords a{display: inline-block;font-size:1.2em;position: relative;top: 10px;vertical-align: top;}
+    </style>
+</head>
+<body>
+    <div class="item">
+        <label for="" class="u-label"><span class="required">*</span>关键词：</label>
+        <input name="keyWords" id="keyWords" type="text">
+        <div class="keywords">
+            <p>常用关键词：</p>
+            <ul>
+                <li>列表项1</li>
+                <li>列表项2</li>
+                <li>列表项3</li>
+                <li>列表项4</li>
+                <li>列表项5</li>
+                <li>列表项6</li>
+                <li>列表项7</li>
+                <li>列表项8</li>
+                <li>列表项9</li>
+                <li>列表项0</li>
+                <li>列表项11</li>
+                <li>列表项12</li>
+                <li>列表项13</li>
+                <li>列表项14</li>
+                <li>列表项15</li>
+                <li>列表项16</li>
+                <li>列表项17</li>
+                <li>列表项18</li>
+                <li>列表项19</li>
+                <li>列表项20</li>
+            </ul>
+            <a href="#" id="more_button" style="display: none;">更多></a>
+        </div>
+    </div>
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+    //关键词选择框
+    window.onload = function () {
+        var texts = [],
+        liTexts = '';
+        /*‘更多’按钮*/
+        if($('.keywords li').length>10){
+            $('#more_button').show();
+        }//li多于10个才显示‘更多’按钮
+        $('#more_button').on('click',function () {
+            $('.keywords ul').css('height','auto');
+            $('#more_button').hide();
+        })//点击后隐藏
+        /*点击li后，添加到input中，同时应用选中样式*/
+        $('.keywords li').on('click',function () {
+            var li = $(this),
+            text = this.innerText;
+            for(var i = 0;i<texts.length;i++){
+                if(text === texts[i]){
+                    texts.splice(i,1);
+                    liTexts = texts.join(' ');
+                    $('input[name=keyWords]').css('width',5*texts.length+'em');
+                    li.removeClass('active');
+                    document.getElementById('keyWords').value = liTexts;
+                    return;
+                }
+            }
+            $('input[name=keyWords]').css('width',5*texts.length+'em');
+
+            texts.push(text);
+            liTexts = texts.join(' ');
+            li.addClass('active');
+            document.getElementById('keyWords').value = liTexts;
+        })
+        /*在input输入数据后 为相同的li应用选中状态；*/
+        var liKeyWords = [];
+        for(var i = 0;i<$('.keywords li').length;i++){
+            liKeyWords.push($('.keywords li')[i].innerText);
+        }//遍历li标签，保存innerText到数组中
+        console.log(liKeyWords);
+        $('#keyWords').bind('input propertychange', function() {
+            var keyWord = this.value;
+            var keyWords = keyWord.split(' ');
+            console.log($('input[name=keyWords]')[0].offsetWidth)
+
+            $('input[name=keyWords]').css('width',5*keyWords.length+'em');
+            $('.keywords li').removeClass('active');
+            texts = [];
+            for(var i = 0;i<keyWords.length;i++){
+                for(var j = 0;j<liKeyWords.length;j++){
+                    if(keyWords[i] == liKeyWords[j]){
+                        texts.push($('.keywords li')[j].innerText);
+                        $($('.keywords li')[j]).addClass('active');
+                        break;
+                    }
+                }
+            }
+        });
+    }
+</script>
+</body>
+</html>
