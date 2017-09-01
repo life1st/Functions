@@ -39,7 +39,8 @@ window.onload = function () {
     /*点击li后，添加到input中，同时应用选中样式*/
     $('.keywords li').on('click',function () {
         var li = $(this),
-            text = this.innerText;
+            text = this.innerText,
+            texts = document.getElementById('keyWords').value.split(' ');
         for(var i = 0;i<texts.length;i++){
             if(text === texts[i]){
                 texts.splice(i,1);
