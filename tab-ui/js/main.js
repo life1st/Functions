@@ -1,6 +1,6 @@
 /*tab-menu setting. DONE..*/
 function change(key) {
-    console.log('change success.');
+    console.log('change success.'+key);
     $('.menu-tab li').removeClass('active');
     $('#tab_li'+key).addClass('active');
 
@@ -23,20 +23,17 @@ var ot = 0;
 $('.menu-li').on('click',function (e) {
     //        e.preventDefault();
     var key = $(this).attr('id').replace('menu_li','');
-    console.log(key);
     var text =this.innerText;
-    console.log(text)
-    // var tlink = $(this).attr('href');
+    // var tlink = $(this).attr('href'); //获取a标签的链接，赋值给内容区
     //如果不存在tab则创建
-    if(!$('#tab_li'+key)[0]&&ot<10) {
+    if(!$('#tab_li'+key)[0]) {
+        if(ot>=10){
+            alert('标签不能多余10个,请先关闭一些标签');
+            return false;
+        }
         ot++;
         $('.menu-tab').append('<li class="tab-li" id="tab_li'+key+'" style="display: none;">'+text+'<span class="close-menutab" >×</span></li>');
         $('#tab_li'+key).fadeIn(150);
-    }else if(ot>=10){
-        alert('标签不能多余10个,请先关闭一些标签');
-        var cgKey = $('.menu-tab li:last-child').attr('id').replace('menu_li','');
-        change(cgKey);
-        return false;
     }
     //如果不存在content则创建
     if(!$('#content_' + key)[0]) {
@@ -75,7 +72,6 @@ $('body').on('click','.close-menutab',function (e) {
         }
         //关闭当前页面
         if(parent.attr('class').indexOf('active') !== -1){
-            console.log('close act.'+parent.attr('class').indexOf('active'));
             newKey = $('.menu-tab li:last-child').attr('id').replace('tab_li','');
             change(newKey);
             return false;//阻止冒泡
