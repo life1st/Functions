@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>simpleShopCar</title>
-    <link rel="stylesheet" href="css/main.css">
+  <meta charset="UTF-8">
+  <title>simpleShopCar</title>
+  <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-    <table id="jsTrolley">
-    <thead><tr><th>名称</th><th>价格</th><th>操作</th></tr></thead>
-    <tbody>
-        <tr><td>产品1</td><td>10.00</td><td><a href="javascript:void(0);">删除</a></td></tr>
-        <tr><td>产品2</td><td>30.20</td><td><a href="javascript:void(0);">删除</a></td></tr>
-        <tr><td>产品3</td><td>20.50</td><td><a href="javascript:void(0);">删除</a></td></tr>
-    </tbody>
-    <tfoot><tr><th>总计</th><td colspan="2">60.70(3件商品)</td></tr></tfoot>
-    <a href="#" onclick="add();">添加</a>
+<table id="jsTrolley">
+  <thead><tr><th>名称</th><th>价格</th><th>操作</th></tr></thead>
+  <tbody>
+  <tr><td>产品1</td><td>10.00</td><td><button class="delete-btn">删除</button></td></tr>
+  <tr><td>产品2</td><td>30.20</td><td><button class="delete-btn">删除</button></td></tr>
+  <tr><td>产品3</td><td>20.50</td><td><button class="delete-btn">删除</button></td></tr>
+  </tbody>
+  <tfoot><tr><th>总计</th><td colspan="2">60.70(3件商品)</td></tr></tfoot>
+  <button class="add-btn">添加</button>
 </table>
 <script src='js/main.js'></script>
 </body>
