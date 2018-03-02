@@ -9,11 +9,29 @@
 <table id="jsTrolley">
   <thead><tr><th>名称</th><th>价格</th><th>操作</th></tr></thead>
   <tbody>
-  <tr><td>产品1</td><td>10.00</td><td><button class="delete-btn">删除</button></td></tr>
-  <tr><td>产品2</td><td>30.20</td><td><button class="delete-btn">删除</button></td></tr>
-  <tr><td>产品3</td><td>20.50</td><td><button class="delete-btn">删除</button></td></tr>
+  <tr data-id="123">
+    <td class="name">产品1</td>
+    <td class="price">10.00</td>
+    <td>
+      <button class="delete-btn">删除</button>
+    </td>
+  </tr>
+  <tr data-id="124">
+    <td class="name">产品2</td>
+    <td class="price">30.20</td>
+    <td>
+      <button class="delete-btn">删除</button>
+    </td>
+  </tr>
+  <tr data-id="125">
+    <td class="name">产品3</td>
+    <td class="price">20.50</td>
+    <td>
+      <button class="delete-btn">删除</button>
+    </td>
+  </tr>
   </tbody>
-  <tfoot><tr><th>总计</th><td colspan="2">60.70(3件商品)</td></tr></tfoot>
+  <tfoot><tr><th>总计</th><td colspan="2" class="total-price">60.70(3件商品)</td></tr></tfoot>
   <button class="add-btn">添加</button>
 </table>
 <script src='js/main.js'></script>

@@ -1,52 +1,112 @@
 ;(function () {
+  var data = {}
+  function datas() {
+
+    this.set = function (item) {
+      if (!!item) {
+        data[item.id] = {
+          name: item.name,
+          price: item.price,
+        }
+
+        console.log('data update', data)
+      } else {
+        var items = tbody.querySelectorAll('tr')
+        items.forEach((item) => {
+          var id = item.dataset.id
+          var name = item.querySelector('.name').innerText
+          var price = item.querySelector('.price').innerText
+          data[id] = {
+            name: name,
+            price: price
+          }
+        })
+
+        console.log('data init', data)
+      }
+    }
+    this.get = function () {
+      return data
+    }
+    this.del = function (id) {
+      if (data[id]) {
+        delete data[id]
+        price()
+        console.log('data deleted', data)
+      } else {
+        console.error('no this data, please checkout.')
+        console.log('data error', data)
+      }
+    }
+    this.updataTotal = function () {
+      var res = function () {
+        var price = 0
+        var num = 0
+        for (var k in data) {
+          price += (data[k].price * 1)
+          num++
+        }
+        return {
+          price: price.toFixed(2),
+          num: num
+        }
+      }()
+      var totalTpl = `${res.price}(${res.num}件商品)`
+      return totalTpl
+    }
+
+    return this
+  }
+
+  var tbody = document.getElementsByTagName('tbody')[0];
+
   function add(items) {
     //item 通过参数传进来 这里用个函数模拟下。
     var item = newItem();
+    var tr = document.createElement('tr')
+    tr.setAttribute('data-id', item.id)
     var itemTpl =
-      ` <td>${item.name}</td>
-        <td>${item.price}</td>
+      ` <td class="name">${item.name}</td>
+        <td class="price">${item.price}</td>
         <td>
           <button class="delete-btn">删除</button>
         </td>`
 
-    var tr = document.createElement('tr')
     tr.innerHTML = itemTpl
-    var tbody = document.getElementsByTagName('tbody')[0];
     tbody.appendChild(tr)
+    datas().set(item)
     price();
-    bind();
+    // bind();
   }
 
 
   function bind() {
-    var tr = document.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
-    // console.log(tr)
+    tbody.addEventListener('click', function (event) {
+      var dom = event.target
+      if (dom.className === 'delete-btn') {
+        var tr = dom.parentNode.parentNode
+        var id = tr.dataset.id
+        console.log('delete', id)
+        tr.remove()
+        datas().del(id)
+      }
+    })
 
-    for(var i = 0;i<tr.length;i++){
-      tr[i].getElementsByTagName('td')[2].addEventListener('click',function(e){
-        this.parentNode.remove();
-        // console.log(this.parentNode)
-        price();
-      })
-    }
+    var addBtn = document.querySelector('.add-btn')
+    addBtn.addEventListener('click', add)
   }
 
   function price() {
-    var tr = document.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
-    var Prices = 0;
-    console.log(tr)
-    for(var i = 0;i<tr.length;i++){
-      console.log(tr[i].getElementsByTagName('td')[1].innerText)
-      Prices += Math.round((tr[i].getElementsByTagName('td')[1].innerText)*100)/100;
-    }
-    // console.log(Prices)
-    document.getElementsByTagName('tfoot')[0].getElementsByTagName('td')[0].innerText = Prices +'('+tr.length+'件商品)'
+    document.querySelector('.total-price').innerText = datas().updataTotal();
   }
 
+  // 'DOMContentLoaded' 在每次 DOM 更新后都会被调用，所以会重复 bind() ... 。
+  // 但是也有可能是我绑定在 document 上了。
+  // 找到原因了，80 行的 bind()。。。我...
   document.addEventListener('DOMContentLoaded', function () {
     console.log('dom ready.')
-    var addBtn = document.querySelector('.add-btn')
-    addBtn.addEventListener('click', add)
+    bind()
+    datas().set()
   })
 })()
 
@@ -56,7 +116,8 @@
 function newItem() {
   var item = {
     name: '随机商品' + Math.floor(Math.random() * 10),
-    price: (Math.random() * 90).toFixed(2) * 1
+    price: (Math.random() * 90).toFixed(2) * 1,
+    id: Math.floor(Math.random() * 100)
   }
 
   return item
