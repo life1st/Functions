@@ -71,3 +71,6 @@
 还有在计算金额的时候，是不是每次都 for in 效率可以提高？//应该可以提高，我需要再加一个 totalPrice 的字段在 data 对象里。
 
 
+## Voice Range
+
+[Demo](https://life1st.github.io/commonJS/voiceRange/dist/index.html)
