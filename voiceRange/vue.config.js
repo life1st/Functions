@@ -7,9 +7,4 @@ module.exports = {
       }
     }
   },
-  devServer: {
-    proxy: {
-      
-    }
-  }
 }
