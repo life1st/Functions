@@ -16,7 +16,7 @@
     <div class="status">
       <div class="time">
         <p v-for="(time, k) in times" :key="k">视频{{k}}开始播放时间 : {{time}} s</p>
-        <p class="now">时间轴总经过时间：{{timeline.now}} S</p>
+        <p class="now">时间轴总经过时间：{{timeLine.now}} S</p>
         <p class="buffered">最短 buffered 时间： {{minBuffered}}</p>
       </div>
     </div>
@@ -55,7 +55,7 @@
             isPause: null
           }
         ],
-        timeline: {
+        timeLine: {
           start: 0,
           now: 0,
         },
@@ -65,7 +65,7 @@
     },
     computed: {
       timeNow() {
-        return this.timeline.now
+        return this.timeLine.now
       },
       minBuffered() {
         let arr = []
@@ -81,11 +81,12 @@
         console.log(now)
       },
       // minBuffered: function(buffered) {
-
-      //   if (buffered < 10) {
-      //     this.pauseAll()
-      //   } else {
-      //     this.rePlayAll()
+      //   if (this.timeLine.now >= this.videos[i].startAt) {
+      //     if (buffered < 10) {
+      //       this.pauseAll()
+      //     } else {
+      //       this.rePlayAll()
+      //     }
       //   }
       // }
     },
@@ -100,7 +101,7 @@
       // rePlayAll() {
       //   let videos = this.$refs.videos.querySelectorAll('video')
       //   videos.forEach((video, i) => {
-      //     if (this.timeline.now >= this.videos[i].startAt) {
+      //     if (this.timeLine.now >= this.videos[i].startAt) {
       //       video.play()
       //     } else {
       //       return
@@ -114,7 +115,7 @@
           if (this.isPlaying) {
             video.pause()
           } else {
-            if (this.timeline.now >= this.videos[i].startAt) {
+            if (this.timeLine.now >= this.videos[i].startAt) {
               video.play()
             }
           }
@@ -137,9 +138,9 @@
             this.videos[i].isPause = isPause
           })
           if (this.isPlaying) {
-            this.timeline.now ++
+            this.timeLine.now ++
             this.times.forEach((time, i) => {
-              if (this.timeline.now === time) {
+              if (this.timeLine.now === time) {
                 videos[i].play()
               }
             })
@@ -151,6 +152,12 @@
         this.videos.forEach(video => {
           this.times.push(video.startAt)
         })
+      },
+      initEvent() {
+        let video = document.querySelector('video')
+        video.addEventListener('progress', (e) => {
+          console.log('Progress event handle:>>>', e)
+        })
       }
     },
     created() {
@@ -158,6 +165,7 @@
       this.initTimeLine()
       this.$nextTick(() => {
         this.timePlus()
+        this.initEvent()
       })
     }
   }
