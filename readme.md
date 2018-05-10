@@ -1,4 +1,6 @@
-# commonJS
+# Functions JS
+
+Just like the repository named `commonStyle`, here's something useful or useless typed by myself.(although there is nothing...)
 
 和commonStyle那个仓库一样，放一些自己用的小功能（虽然那个仓库还什么都没有...）
 
@@ -74,3 +76,9 @@
 ## Voice Range
 
 [Demo](https://life1st.github.io/commonJS/voiceRange/dist/index.html)
+
+## closureAdd
+
+三月初去面试某厂时遇到的问题，现在想起来了整理一下。[code](./closureAdd/add.js)
+
+![screenShot](./closureAdd/img/2018-5-10_15-42-39.jpg)
