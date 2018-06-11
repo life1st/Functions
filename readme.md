@@ -6,7 +6,7 @@ Just like the repository named `commonStyle`, here's something useful or useless
 
 ## 1.click-input
 
-[Demo点这里](https://life1st.github.io/commonJS/click-input/index.html)
+[Demo点这里](https://life1st.github.io/Functions/click-input/index.html)
 
 预览图：
 
@@ -28,7 +28,7 @@ Just like the repository named `commonStyle`, here's something useful or useless
 
 ## 2.tab-ui
 
-[Demo点这里](https://life1st.github.io/commonJS/tab-ui/index.html)
+[Demo点这里](https://life1st.github.io/Functions/tab-ui/index.html)
 
 预览图：
 
@@ -42,7 +42,7 @@ Just like the repository named `commonStyle`, here's something useful or useless
 
 ## 3.simpleShopCar
 
-[Demo点这里](https://life1st.github.io/commonJS/simpleShopCar/index.html)
+[Demo点这里](https://life1st.github.io/Functions/simpleShopCar/index.html)
 
 预览图：
 
@@ -75,7 +75,7 @@ Just like the repository named `commonStyle`, here's something useful or useless
 
 ## Voice Range
 
-[Demo](https://life1st.github.io/commonJS/voiceRange/dist/index.html)
+[Demo](https://life1st.github.io/Functions/voiceRange/dist/index.html)
 
 ## closureAdd
 
@@ -85,7 +85,7 @@ Just like the repository named `commonStyle`, here's something useful or useless
 
 ## Vue transition list Animation
 
-[Demo](https://life1st.github.io/vueListAnimate/index.html)
+[Demo](https://life1st.github.io/Functions/vueListAnimate/index.html)
 
 Vue 列表动画的实现 主要是通过 `v-move` 设置列表的平滑过渡。
 
