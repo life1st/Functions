@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Vue</title>
+  <style>
+    .slide-enter,
+    .slide-leave-to {
+      transform: translateX(-100%);
+    }
+
+    .slide-enter-active,
+    .slide-leave-active {
+      transition: all 300ms;
+    }
+
+    .slide-leave-active {
+      position: absolute;
+    }
+
+    .slide-enter-to,
+    .slide-leave {
+      transform: translateX(0);
+    }
+
+    .slide-move {
+      transition: all 300ms;
+    }
+
+    .slide-item {
+      transition: all 300ms;
+    }
+  </style>
+</head>
+
+<body>
+<div class="root">
+  <div class="btns">
+    <button @click='shift'>shift</button>
+    <button @click='pop'>pop</button>
+    <button @click='push'>push</button>
+    <button @click='unshift'>unshift</button>
+    <button @click='removeRandom'>random Remove</button>
+    <button @click='insertRandom'>random Insert</button>
+  </div>
+  <transition-group name='slide' tag='ul'>
+    <li v-for='item in items' :key='item.time' class="slide">
+      <p class="info">
+        <span class="time">{{item.time | filterTime}}</span>
+        <span class="name">{{item.name}}</span>
+      </p>
+      <p class="content">{{item.text}}</p>
+    </li>
+  </transition-group>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+<script>
+  let rootEl = document.querySelector('.root')
+
+  const TEXTS = ['Aute est aliquip excepteur qui amet sit irure.',
+    'Adipisicing laborum est in consectetur deserunt ullamco sit ex adipisicing veniam id.',
+    'Dolor ex labore nulla qui.',
+    'Enim dolor dolor ad adipisicing ullamco dolore est laboris fugiat excepteur ullamco anim.',
+    'Eu eu dolore adipisicing cillum ad pariatur sit tempor commodo laboris eu cillum sit deserunt.']
+  const TEXTS_LEN = TEXTS.length
+
+  let dataTpl = (index) => {
+    return {
+      time: Math.floor(Math.random() * 1000000000000),
+      text: TEXTS[index % TEXTS_LEN],
+      name: 'Yang'
+    }
+  }
+
+  let root = new Vue({
+    el: '.root',
+    data() {
+      return {
+        name: 'life1st',
+        items: [
+
+        ]
+      }
+    },
+    filters: {
+      filterTime(value) {
+        console.log(value)
+        let now = new Date(value)
+        return `${now.getFullYear()}/${now.getMonth() + 1}/${now.getDay()}`
+      }
+    },
+    created() {
+      const DATA_LENGTH = 6
+
+      for (let i = 0; i < DATA_LENGTH; i++) {
+        this.push(i)
+      }
+    },
+    methods: {
+      shift() {
+        this.items.shift()
+      },
+      pop() {
+        this.items.pop()
+      },
+      push(i) {
+        i ? i = Math.floor(Math.random() * 32) : ''
+        this.items.push(dataTpl(i))
+      },
+      unshift(i) {
+        i ? i = Math.floor(Math.random() * 32) : ''
+        this.items.unshift(dataTpl(i))
+      },
+      removeRandom() {
+        const LEN = this.items.length
+        let i = Math.floor(Math.random() * LEN)
+        this.items.splice(i, 1)
+      },
+      insertRandom() {
+        const LEN = this.items.length
+        let i = Math.floor(Math.random() * LEN)
+        this.items.splice(i, 0, dataTpl(i))
+      }
+    }
+  })
+</script>
+</body>
+</html>

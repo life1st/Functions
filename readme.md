@@ -82,3 +82,13 @@ Just like the repository named `commonStyle`, here's something useful or useless
 三月初去面试某厂时遇到的问题，现在想起来了整理一下。[code](./closureAdd/add.js)
 
 ![screenShot](./closureAdd/img/2018-5-10_15-42-39.jpg)
+
+## Vue transition list Animation
+
+[Demo](https://life1st.github.io/commonJS/voiceRange/dist/index.html)
+
+Vue 列表动画的实现 主要是通过 `v-move` 设置列表的平滑过渡。
+
+![screenShot](./vueListAnimate/imgs/2018-6-11_17-44-41.jpg)
+
+ 
