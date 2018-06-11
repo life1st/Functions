@@ -6,13 +6,16 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Vue List Animation.</title>
   <style>
+    body {
+      overflow: hidden;
+    }
     .slide-enter,
     .slide-leave-to {
       transform: translateX(-100%);
     }
     .slide-enter-active,
     .slide-leave-active {
-      transition: all 300ms;
+      transition: all 300ms cubic-bezier(.76,.15,.37,1.53);
     }
     .slide-leave-active {
       position: absolute;
@@ -22,10 +25,10 @@
       transform: translateX(0);
     }
     .slide-move {
-      transition: all 300ms;
+      transition: all 500ms;
     }
     .slide-item {
-      transition: all 300ms;
+      transition: all 500ms;
     }
   </style>
 </head>
@@ -38,6 +41,7 @@
     <button @click='unshift'>unshift</button>
     <button @click='removeRandom'>random Remove</button>
     <button @click='insertRandom'>random Insert</button>
+    <button @click='shuffle'>shuffle</button>
   </div>
   <transition-group name='slide' tag='ul'>
     <li v-for='item in items' :key='item.time' class="slide">

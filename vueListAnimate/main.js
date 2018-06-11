@@ -25,7 +25,6 @@ let root = new Vue({
   },
   filters: {
     filterTime(value) {
-      console.log(value)
       let now = new Date(value)
       return `${now.getFullYear()}/${now.getMonth() + 1}/${now.getDay()}`
     }
@@ -61,6 +60,9 @@ let root = new Vue({
       const LEN = this.items.length
       let i = Math.floor(Math.random() * LEN)
       this.items.splice(i, 0, dataTpl(i))
+    },
+    shuffle() {
+      this.items = this.items.sort(() => 0.5 - Math.random()).sort(() => Math.random() - 0.5)
     }
   }
 })
