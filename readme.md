@@ -91,4 +91,12 @@ Vue 列表动画的实现 主要是通过 `v-move` 设置列表的平滑过渡�
 
 ![screenShot](./vueListAnimate/imgs/2018-6-11_17-44-41.jpg)
 
+## Simple vue toast
+
+[Demo](https://life1st.github.io/Functions/message/dist/index.html)
+
+[readme](https://life1st.github.io/Functions/message/index.html)
+
+![screenShot](./message/document/image/2018-6-27_20-51-25.jpg)
+
  
