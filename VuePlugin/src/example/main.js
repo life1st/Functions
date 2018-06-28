@@ -3,10 +3,13 @@ import App from './App.vue'
 
 import router from './router'
 
-import message from '../message/index'
-Vue.use(message)
+Vue.config.productionTip = true
 
-Vue.config.productionTip = false
+import message from '../message'
+import loading from '../loading'
+
+Vue.use(message)
+Vue.use(loading)
 
 new Vue({
   router,

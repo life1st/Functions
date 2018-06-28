@@ -6,6 +6,7 @@ import router from 'vue-router'
 import message from './MessageIndex'
 import loading from './LoadingIndex'
 
+
 Vue.use(router)
 
 export default new router({
