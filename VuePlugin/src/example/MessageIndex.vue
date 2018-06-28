@@ -7,39 +7,39 @@
 </template>
 
 <script>
-  export default {
-    name: "MessageIndex",
-    data() {
-      return {
-        msg: null
-      }
-    },
-    methods: {
-      openMsg(str) {
-        switch (str) {
-          case 'warning':
-            this.$msg({
-              text: 'test message.',
-              type: 'warning'
+export default {
+  name: 'MessageIndex',
+  data () {
+    return {
+      msg: null
+    }
+  },
+  methods: {
+    openMsg (str) {
+      switch (str) {
+        case 'warning':
+          this.$msg({
+            text: 'test message.',
+            type: 'warning'
+          })
+          break
+        case 'manualClose':
+          if (this.msg) {
+            this.msg.close()
+            this.msg = null
+          } else {
+            this.msg = this.$msg({
+              text: `I won't close automatically.click the button to close.`,
+              autoClose: false
             })
-            break
-          case 'manualClose':
-            if (this.msg) {
-              this.msg.close()
-              this.msg = null
-            } else {
-              this.msg = this.$msg({
-                text: `I won't close automatically.click the button to close.`,
-                autoClose: false
-              })
-            }
-            break
-          default:
-            this.$msg('test message without icon')
-        }
+          }
+          break
+        default:
+          this.$msg('test message without icon')
       }
     }
   }
+}
 </script>
 
 <style scoped>

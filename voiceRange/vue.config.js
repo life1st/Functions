@@ -1,4 +1,5 @@
 module.exports = {
+  baseUrl: './',
   configureWebpack: {
     resolve: {
       alias: {

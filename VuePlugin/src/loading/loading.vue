@@ -8,43 +8,43 @@
 </template>
 
 <script>
-  export default {
-    name: "loading",
-    props: {
-      Desc: {
-        type: String,
-      }
-    },
-    data() {
-      return {
-        desc: 'loading',
-        subStr: '',
-        showLoading: false
-      }
-    },
-    watch: {
-      showLoading(flag) {
-        if (flag) {
-          this.subPoint()
-        } else if (this.timer) {
-          clearInterval(this.timer)
-        }
-      }
-    },
-    methods: {
-      subPoint() {
-        let points = ['.', '..', '...']
-        let i = 0
-        this.timer = setInterval(() => {
-          this.subStr = points[i++ % points.length]
-        }, 500)
-      }
-    },
-    mounted() {
-      this.showLoading = true
-      if (this.Desc) this.desc = this.Desc
+export default {
+  name: 'loading',
+  props: {
+    Desc: {
+      type: String
     }
+  },
+  data () {
+    return {
+      desc: 'loading',
+      subStr: '',
+      showLoading: false
+    }
+  },
+  watch: {
+    showLoading (flag) {
+      if (flag) {
+        this.subPoint()
+      } else if (this.timer) {
+        clearInterval(this.timer)
+      }
+    }
+  },
+  methods: {
+    subPoint () {
+      let points = ['.', '..', '...']
+      let i = 0
+      this.timer = setInterval(() => {
+        this.subStr = points[i++ % points.length]
+      }, 500)
+    }
+  },
+  mounted () {
+    this.showLoading = true
+    if (this.Desc) this.desc = this.Desc
   }
+}
 </script>
 
 <style scoped lang="less">

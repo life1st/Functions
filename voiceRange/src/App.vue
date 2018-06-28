@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <!-- <voice-range></voice-range> -->
-    <v-video></v-video>
+     <voice-range></voice-range>
+    <!--<v-video></v-video>-->
   </div>
 </template>
 

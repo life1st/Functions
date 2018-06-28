@@ -15,7 +15,7 @@ msgPlugin.install = function (Vue, options = {}) {
   Vue.prototype.$msg = (option = {}) => {
     let instance = new messageControler().$mount(document.createElement('div'))
     let duration = option.duration || options.duration || 2500
-    if (typeof option === 'string' ) {
+    if (typeof option === 'string') {
       instance.text = option
     } else {
       for (let k in option) {

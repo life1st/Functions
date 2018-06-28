@@ -3,10 +3,10 @@ import App from './App.vue'
 
 import router from './router'
 
-Vue.config.productionTip = true
-
 import message from '../message'
 import loading from '../loading'
+
+Vue.config.productionTip = true
 
 Vue.use(message)
 Vue.use(loading)

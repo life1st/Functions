@@ -14,7 +14,7 @@ loadingPlugin.install = function (Vue, options = {}) {
 
   Vue.prototype.$loading = (option = {}) => {
     let instance = new loadingController().$mount(document.createElement('div'))
-    if (typeof option === 'string' ) {
+    if (typeof option === 'string') {
       instance.desc = option
     } else {
       for (let k in option) {

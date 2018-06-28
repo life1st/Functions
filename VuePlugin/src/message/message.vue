@@ -7,33 +7,33 @@
 </template>
 
 <script>
-  export default {
-    name: "message",
-    props: {
-      type: {
-        type: String,
-        default: () => 'default'
-      },
-      text: {
-        type: String,
-        default: () => 'success'
-      }
+export default {
+  name: 'message',
+  props: {
+    type: {
+      type: String,
+      default: () => 'default'
     },
-    computed: {
-      msgType() {
-        let types = ['default', 'success', 'info', 'warning', 'error']
-        return (types.includes(this.type)) ? this.type : types[0]
-      }
-    },
-    data() {
-      return {
-        showMsg: false
-      }
-    },
-    mounted() {
-      this.showMsg = true
+    text: {
+      type: String,
+      default: () => 'success'
     }
+  },
+  computed: {
+    msgType () {
+      let types = ['default', 'success', 'info', 'warning', 'error']
+      return (types.includes(this.type)) ? this.type : types[0]
+    }
+  },
+  data () {
+    return {
+      showMsg: false
+    }
+  },
+  mounted () {
+    this.showMsg = true
   }
+}
 </script>
 
 <style scoped lang="less">
