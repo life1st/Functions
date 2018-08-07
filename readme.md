@@ -93,7 +93,7 @@ Vue 列表动画的实现 主要是通过 `v-move` 设置列表的平滑过渡�
 
 ## Vue Plugins
 
-there are some vue plugins I write and use in my proj. If you interested about it, please click [readme](https://life1st.github.io/Functions/message/index.html) to know more. By the way, you can click [Demo](https://life1st.github.io/Functions/message/dist/index.html) to see what is it look like.
+there are some vue plugins I write and use in my proj. If you interested about it, please click [readme](https://life1st.github.io/Functions/message/index.html) to know more. By the way, you can click [Demo](https://life1st.github.io/Functions/VuePlugin/dist/index.html) to see what is it look like.
 
 ![screenShot](./VuePlugin/document/image/2018-6-27_20-51-25.jpg)
 
