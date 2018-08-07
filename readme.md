@@ -97,4 +97,6 @@ there are some vue plugins I write and use in my proj. If you interested about i
 
 ![screenShot](./VuePlugin/document/image/2018-6-27_20-51-25.jpg)
 
+ ## canvas huaji
  
+ [Demo](https://life1st.github.io/Functions/huaji/index.html)
