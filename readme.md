@@ -2,8 +2,6 @@
 
 Just like the repository named `commonStyle`, here's something useful or useless typed by myself.(although there is nothing...)
 
-和commonStyle那个仓库一样，放一些自己用的小功能（虽然那个仓库还什么都没有...）
-
 ## 1.click-input
 
 [Demo点这里](https://life1st.github.io/Functions/click-input/index.html)
