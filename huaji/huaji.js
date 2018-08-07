@@ -28,19 +28,19 @@ Huaji.prototype.setSize = function(width, height) {
 Huaji.prototype.animation = function(canvas) {
   let p = { ...this.position }
   if (p.top < 0) {
-    this.speedH = 10 + randomNum(2, 6)
+    this.speedH = 8 + randomNum(2, 6)
   } else if (p.top > canvas.height) {
-    this.speedH = -10  + randomNum(1, 6)
+    this.speedH = -8  + randomNum(1, 6)
   }
   if (p.left < 0) {
-    this.speedW = 10 + randomNum(1, 5)
+    this.speedW = 8 + randomNum(1, 5)
   } else if (p.left > canvas.width) {
-    this.speedW = -10 + randomNum(4, 7)
+    this.speedW = -8 + randomNum(4, 7)
   }
   p.top += this.speedH
   p.left += this.speedW 
   this.setPosition(p.top, p.left)
-  let scale = Math.random > 0.5 ? 1 : -1
+  let scale = Math.random() > 0.5 ? 1 : -1
   this.setSize(this.size.width + scale, this.size.height + scale)
 
   canvas.drwaImg(this.img, this.position.left, this.position.top, this.size.width, this.size.height)

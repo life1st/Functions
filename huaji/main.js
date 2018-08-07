@@ -1,6 +1,8 @@
 let el = document.querySelector('#huajiWrap')
 let canvas = new Canvas(el)
-canvas.setSize(window.clientWidth, window.clientHeigh)
+console.log(canvas)
+canvas.setSize(document.body.clientWidth, document.body.clientHeight)
+console.log(canvas)
 
 
 let huajiCount = 0
