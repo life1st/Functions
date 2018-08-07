@@ -1,26 +1,31 @@
+import Canvas from './canvas'
+import Huaji from './huaji'
+import { randomNum, getParams} from "./utils";
+
 let el = document.querySelector('#huajiWrap')
 let canvas = new Canvas(el)
-console.log(canvas)
 canvas.setSize(document.body.clientWidth, document.body.clientHeight)
-console.log(canvas)
 
+let params = getParams()
 
 let huajiCount = 0
-const COUNT = 200
+const COUNT = params.count || 400
 
 let huajis = []
 for (let i = 0; i < COUNT; i++) {
   huajis.push(new Huaji())
 }
 huajis.forEach(huaji => {
-  huaji.setPosition(randomNum(20, 1000), randomNum(50, 1200))
-  let size = randomNum(20, 150)
+  huaji.setPosition(randomNum(0, document.body.clientWidth)
+    , randomNum(0, document.body.clientHeight))
+  let size = randomNum(20, 200)
   huaji.setSize(size, size)
   huaji.img.onload = function() {
     huajiCount += 1
     anima()
   }
 })
+
 function anima() {
   if (huajiCount < COUNT) return
   requestAnimationFrame(realAnima)

@@ -1,4 +1,4 @@
-function Canvas(el) {
+export default function Canvas(el) {
   this.canvas = el
   this.height = 900
   this.width = 1280
@@ -24,3 +24,4 @@ Canvas.prototype.drawRect = function(color, left, top, width, height) {
 Canvas.prototype.drwaImg = function(img, left, top, width, height) {
   this.ctx.drawImage(img, left, top, width, height)
 }
+

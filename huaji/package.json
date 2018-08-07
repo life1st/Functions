@@ -1,0 +1,20 @@
+{
+  "name": "huaji",
+  "version": "1.0.0",
+  "description": "huaji canvas",
+  "main": "script/main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "keywords": [
+    "huaji",
+    "canvas"
+  ],
+  "author": "life1st",
+  "license": "WTFPL",
+  "devDependencies": {
+    "webpack": "^4.16.5",
+    "webpack-cli": "^3.1.0"
+  }
+}
