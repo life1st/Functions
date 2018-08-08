@@ -1,9 +1,9 @@
-function randomNum(min, max) {
+export function randomNum(min, max) {
   let range = max - min + 1
   return Math.floor(Math.random() * range + min)
 }
 
-function getParams() {
+export function getParams() {
   let params = window.location.search
   params = params.slice(1)
   let arr = params.split('&')
@@ -13,8 +13,4 @@ function getParams() {
     obj[kv[0]] = kv[1]
   }
   return obj
-}
-
-export {
-  randomNum, getParams
 }

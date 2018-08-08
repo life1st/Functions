@@ -1,6 +1,9 @@
+import huajiImg from '../imgs/huaji.png'
+import { randomNum} from "./utils";
+
 export default function Huaji() {
   this.img = new Image()
-  this.img.src = './imgs/huaji.png'
+  this.img.src = huajiImg
   this.position = {
     top: 0,
     left: 0
@@ -39,7 +42,7 @@ Huaji.prototype.scale = function(min, max) {
 }
 
 Huaji.prototype.animation = function(canvas) {
-  let p = { ...this.position }
+  let p = Object.assign(this.position)
   if (p.top < 0) {
     this.speedH = 6 + randomNum(1, 4)
   } else if (p.top > canvas.height) {

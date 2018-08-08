@@ -1,6 +1,7 @@
 import Canvas from './canvas'
 import Huaji from './huaji'
-import { randomNum, getParams} from "./utils";
+// import "./utils";
+import { getParams, randomNum} from "./utils";
 
 let el = document.querySelector('#huajiWrap')
 let canvas = new Canvas(el)
