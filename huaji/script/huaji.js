@@ -16,8 +16,8 @@ export default function Huaji() {
   this.zoom = Math.random() > 0.6
 
   // 设置初始速度 emmm...有改进空间
-  this.speedH = Math.random() > 0.6 ? 10 : -10
-  this.speedW = Math.random() > 0.6 ? -10 : 10
+  this.speedH = Math.random() > 0.6 ? 5 : -5
+  this.speedW = Math.random() > 0.6 ? -5 : 5
 }
 
 Huaji.prototype.setPosition = function(top, left) {
@@ -44,14 +44,14 @@ Huaji.prototype.scale = function(min, max) {
 Huaji.prototype.animation = function(canvas) {
   let p = Object.assign(this.position)
   if (p.top < 0) {
-    this.speedH = 6 + randomNum(1, 4)
-  } else if (p.top > canvas.height) {
-    this.speedH = -6 + randomNum(-4, 1)
+    this.speedH = 5 + randomNum(1, 4)
+  } else if (p.top + this.size.height > canvas.height) {
+    this.speedH = -5 + randomNum(-4, 1)
   }
   if (p.left < 0) {
-    this.speedW = 8 + randomNum(1, 4)
-  } else if (p.left > canvas.width) {
-    this.speedW = -8 + randomNum(-6, -1)
+    this.speedW = 5 + randomNum(1, 4)
+  } else if (p.left + this.size.width > canvas.width) {
+    this.speedW = -5 + randomNum(-4, -1)
   }
   p.top += this.speedH
   p.left += this.speedW

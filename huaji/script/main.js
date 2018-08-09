@@ -10,7 +10,7 @@ canvas.setSize(document.body.clientWidth, document.body.clientHeight)
 let params = getParams()
 
 let huajiCount = 0
-const COUNT = params.count || 400
+const COUNT = params.count || 300
 
 let huajis = []
 for (let i = 0; i < COUNT; i++) {
@@ -19,7 +19,7 @@ for (let i = 0; i < COUNT; i++) {
 huajis.forEach(huaji => {
   huaji.setPosition(randomNum(0, document.body.clientWidth)
     , randomNum(0, document.body.clientHeight))
-  let size = randomNum(20, 200)
+  let size = randomNum(20, 300)
   huaji.setSize(size, size)
   huaji.img.onload = function() {
     huajiCount += 1
