@@ -98,3 +98,7 @@ there are some vue plugins I write and use in my proj. If you interested about i
  ## canvas huaji
  
  [Demo](https://life1st.github.io/Functions/huaji/dist/index.html)
+
+## simple Chat(alpha)
+
+ [Demo](https://life1st.github.io/Functions/simplehat/client/index.html)

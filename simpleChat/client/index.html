@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div class="send">
+    <input type="text" id="msg">
+    <button id="sendBtn">Send</button>
+  </div>
+  <div class="chat">
+
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.dev.js"></script>
+  <script>
+    var socket = io('https://chat-server-lznnhgglzn.now.sh/');
+    socket.on('news', function(data) {
+      console.log(data);
+      socket.emit('my other event', { my: 'data' });
+    });
+  </script>
+  <script src="./main.js"></script>
+</body>
+</html>

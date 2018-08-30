@@ -1,0 +1,20 @@
+{
+  "name": "chat-server",
+  "version": "1.0.0",
+  "description": "socketio chat web",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "soketio",
+    "chat",
+    "web",
+    "server"
+  ],
+  "author": "life1st",
+  "license": "MIT",
+  "dependencies": {
+    "socket.io": "^2.1.1"
+  }
+}
