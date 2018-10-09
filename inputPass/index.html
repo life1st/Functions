@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .input-area {
+      width: 200px;
+      height: 60px;
+      position: relative;
+      display: flex;
+    }
+    .input-area input{
+      display: block;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      z-index: 2;
+    }
+    .input-item {
+      border: 1px solid #000;
+      border-radius: 6px;
+      margin: 2px 8px;
+      width: 25%;
+      font-size: 16px;
+      line-height: 60px;
+      text-align: center;
+    }
+    .input-item.current {
+      position: relative;
+    }
+    .input-item.current:before {
+      content: '';
+      display: block;
+      position: absolute;
+      z-index: 1;
+      top: 20%;
+      left: 50%;
+      height: 60%;
+      line-height: 100%;
+      width: 50%;
+      border-left: 1px solid #000;
+      animation: 1s blink linear infinite reverse;
+    }
+    @keyframes blink {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="input-area">
+    <input type="number" id="realInputEl">
+    <div class="input-item item0"></div>
+    <div class="input-item item1"></div>
+    <div class="input-item item2"></div>
+    <div class="input-item item3"></div>
+  </div>
+  <script src="./index.js"></script>
+</body>
+
+</html>
