@@ -34,4 +34,8 @@
       updateItem()
     }
   })
+
+  window.addEventListener('load', () => {
+    inputEl.focus()
+  })
 })()
