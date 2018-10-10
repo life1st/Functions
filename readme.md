@@ -108,3 +108,9 @@ there are some vue plugins I write and use in my proj. If you interested about i
 N 位数字的输入框 
 
  [Demo](https://life1st.github.io/Functions/inputPass/index.html)
+
+## fingerGuessing
+
+猜拳（石头剪子布） by use ListNode data structure. 
+
+ [Demo](https://life1st.github.io/Functions/fingerGuessing/index.html)
