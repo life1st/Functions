@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>placeholder to title.</title>
+  <style>
+    .InputWrap {
+      margin-top: 20px;
+      font-family: 'STXihei';
+    }
+    .InputWithLegend {
+      position: relative;
+    }
+    .inputer {
+      border: none;
+      border-bottom: 1px solid #DFDFDF;
+      padding-bottom: 15px;
+      font-size: 23px;
+      line-height: 28px;
+    }
+    .inputer:focus {
+      outline: none;
+      border-bottom: 1px solid #191919;
+    }
+    .legend {
+      font-size: 13px;
+      line-height: 18px;
+      margin: 0;
+      padding: 0 8px;
+      position: absolute;
+      background-color: #fff;
+      top: 0;
+      left: 0;
+      transform: translate(2px, -100%) scale(1);
+    }
+    .legend-enter-active,
+    .legend-leave-active {
+      transition: all .3s;
+    }
+    .legend-enter,
+    .legend-leave-to {
+      opacity: 0;
+      font-size: 23px;
+      background-color: rgba(0, 0, 0, 0);
+      transform: translate(0, 0) scale(1.2);
+    }
+  </style>
+</head>
+<body>
+  <div id="root">
+    <div class="InputWrap">
+        <div class="InputWithLegend">
+            <transition name="legend">
+              <p v-show="isFocus" class="legend">{{title}}</p>
+            </transition>
+            <input type="text" 
+            class="inputer"
+            :placeholder="placeholder"
+             @focus="handleInputFocus"
+             @blur="handleInputBlur"
+             >
+          </div>
+    </div>
+  </div>
+  <script src="https://vuejs.org/js/vue.min.js"></script>
+  <script>
+    const initPlaceHolder = '输入话题标题'
+    const app = new Vue({
+      el: '#root',
+      data() {
+        return {
+          isFocus: false,
+          title: '话题标题',
+          placeholder: initPlaceHolder
+        }
+      },
+      methods: {
+        handleInputBlur() {
+          this.placeholder = initPlaceHolder
+          this.isFocus = false
+        },
+        handleInputFocus() {
+          this.placeholder = ''
+          this.isFocus = true
+        }
+      }
+    })
+  </script>
+</body>
+</html>

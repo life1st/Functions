@@ -115,8 +115,9 @@ N 位数字的输入框
 
  [Demo](https://life1st.github.io/Functions/fingerGuessing/index.html)
  
-## markdown converter
+## placeholder to title
 
-markdown -> HTML 编译器 
+表单项的 placeholder 变为 title 的动画
 
- [Demo](https://life1st.github.io/Functions/simpleMdConverter/index.html)
+ [Demo](https://life1st.github.io/Functions/Placeholder2Title/index.html)
+ 
