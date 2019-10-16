@@ -3,6 +3,12 @@ export default function Canvas(el) {
   this.height = 900
   this.width = 1280
   this.ctx = this.canvas.getContext('2d')
+  this.__callback_list = []
+
+  this.canvas.addEventListener('click', (e) => {
+    console.log(e, 'canvas had clicked.')
+    this.__callback_list.forEach(cb => cb(e))
+  })
 }
 
 Canvas.prototype.setSize = function(width = 1280, height = 900) {
@@ -25,3 +31,17 @@ Canvas.prototype.drwaImg = function(img, left, top, width, height) {
   this.ctx.drawImage(img, left, top, width, height)
 }
 
+Canvas.prototype.setBackgroundImage = function (img) {
+  const {width, height} = img
+
+  if (width < this.width || height < this.height) {
+
+  }
+
+}
+
+Canvas.prototype.onClick = function (callback) {
+  if (this.__callback_list.includes(callback)) return
+
+
+}

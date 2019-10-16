@@ -1,9 +1,7 @@
-import huajiImg from '../imgs/huaji.png'
 import { randomNum} from "./utils";
 
-export default function Huaji() {
-  this.img = new Image()
-  this.img.src = huajiImg
+export default function Particle(image) {
+  this.img = image
   this.position = {
     top: 0,
     left: 0
@@ -16,23 +14,23 @@ export default function Huaji() {
   this.zoom = Math.random() > 0.6
 
   // 设置初始速度 emmm...有改进空间
-  this.speedH = Math.random() > 0.6 ? 5 : -5
-  this.speedW = Math.random() > 0.6 ? -5 : 5
+  this.speedH = Math.random() > 0.6 ? 1 : -1
+  this.speedW = Math.random() > 0.6 ? -1 : 1
 }
 
-Huaji.prototype.setPosition = function(top, left) {
+Particle.prototype.setPosition = function(top, left) {
   let p = this.position
   p.top = top
   p.left = left
 }
 
-Huaji.prototype.setSize = function(width, height) {
+Particle.prototype.setSize = function(width, height) {
   let s = this.size
   s.width = width
   s.height = height
 }
 
-Huaji.prototype.scale = function(min, max) {
+Particle.prototype.scale = function(min, max) {
   if (this.size.width + this.step > max) {
     this.step = -1
   } else if (this.size.width + this.step < min) {
@@ -41,16 +39,16 @@ Huaji.prototype.scale = function(min, max) {
   this.setSize(this.size.width + this.step, this.size.height + this.step)
 }
 
-Huaji.prototype.animation = function(canvas) {
+Particle.prototype.getAnimateInfo = function(drawBoard) {
   let p = Object.assign(this.position)
   if (p.top < 0) {
     this.speedH = 5 + randomNum(1, 4)
-  } else if (p.top + this.size.height > canvas.height) {
+  } else if (p.top + this.size.height > drawBoard.height) {
     this.speedH = -5 + randomNum(-4, 1)
   }
   if (p.left < 0) {
     this.speedW = 5 + randomNum(1, 4)
-  } else if (p.left + this.size.width > canvas.width) {
+  } else if (p.left + this.size.width > drawBoard.width) {
     this.speedW = -5 + randomNum(-4, -1)
   }
   p.top += this.speedH
@@ -60,6 +58,9 @@ Huaji.prototype.animation = function(canvas) {
     ? this.scale(50, 150)
     : this.scale(40, 60)
 
-  canvas.drwaImg(this.img, this.position.left, this.position.top, this.size.width, this.size.height)
-
+  return {
+    img: this.img,
+    position: this.position,
+    size: this.size
+  }
 }
