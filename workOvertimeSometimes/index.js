@@ -1,5 +1,7 @@
 const fs = require('fs')
 const path = require('path')
+const { runServer } = require('./server')
+const { repos, author } = require('./config')
 var exec = require('child_process').exec;
 function execute(command){
     return new Promise((resolve, reject) => {
@@ -78,13 +80,18 @@ const save2file = (data, name) => {
 //   save2file(json, name)
 // })
 async function run() {
-  const data = await getGitLog({
-    author: 'jiaoyang',
-  }, '/Users/jiaoy/Documents/Douban/code/frodo-rexxar')
-  const formatData = formatLog(data)
+  const datas = await Promise.all(repos.map(repo => getGitLog({
+    author,
+  }, repo)))
+  const formatData = datas.reduce((acc, data) => {
+    acc.push(...formatLog(data))
+    return acc
+  }, [])
   
-  console.log(formatData)
   await save2file(JSON.stringify(formatData), 'data.json')
+
+  await runServer()
+  execute('start http://localhost:3000')
 }                                                  
 
 run()
