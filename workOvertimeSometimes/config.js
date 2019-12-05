@@ -1,10 +1,16 @@
 module.exports = {
   repos: [
-    'C:/Users/jiaoy/Documents/Code/Douban/code/frodo-rexxar',
-    'C:/Users/jiaoy/Documents/Code/Douban/code/mordor',
-    'C:/Users/jiaoy/Documents/Code/Douban/code/rexxar-common',
-    'C:/Users/jiaoy/Documents/Code/Douban/code/overview2018',
-    'C:/Users/jiaoy/Documents/Code/Douban/code/talion',
+    '/Users/jiaoy/Documents/Douban/code/TalionNav',
+    '/Users/jiaoy/Documents/Douban/code/talion',
+    '/Users/jiaoy/Documents/Douban/code/standbyme', 
+    '/Users/jiaoy/Documents/Douban/code/frodo-rexxar', 
+    '/Users/jiaoy/Documents/Douban/code/comments', 
+    '/Users/jiaoy/Documents/Douban/code/group', 
+    '/Users/jiaoy/Documents/Douban/code/overview2018', 
+    '/Users/jiaoy/Documents/Douban/code/rexxar-common', 
+    '/Users/jiaoy/Documents/Douban/code/ithil', 
+    '/Users/jiaoy/Documents/Douban/code/mordor', 
+    '/Users/jiaoy/Documents/Douban/code/sns', 
   ],
   author: 'jiaoyang'
 }

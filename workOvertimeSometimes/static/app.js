@@ -26,25 +26,55 @@ const parseData = (data) => {
   })
 }
 axios.get('./data.json').then(({data}) => {
-  const seriesData = parseData(data)
+  const seriesData = Object.keys(data)
+  .map(series => parseData(data[series]))
+  .reduce((acc, val, i) => {
+    
+    acc.push({
+      type: 'scatter',
+      data: val,
+      name: Object.keys(data)[i]
+    })
 
-  const [x_min, x_max] = [
-    Math.min(...seriesData.map(item => item[0])),
-    Math.max(...seriesData.map(item => item[0]))
-  ]
+    return acc
+  }, [])
+  
+
+  let [x_min, x_max] = [0, 0]
+  seriesData.map(series => {
+    const [min, max] = [
+      Math.min(...series.data.map(item => item[0])),
+      Math.max(...series.data.map(item => item[0])),
+    ]
+
+    if (min < x_min) {
+      x_min = min
+    }
+    if (max > x_max) {
+      x_max = max
+    }
+  })
 
   const hours = Array(24).fill(null).map((_, i) => `${i}H`)
   const days = Array(Math.ceil(x_max - x_min)).fill(null).map((_, i) => `day${i}`)
 
   const option = {
+    legend: {
+      data: seriesData.map(series => series.name)
+    },
     tooltip: {
       position: 'top',
       formatter: function (params) {
         const [day, hour, str] = params.data
+        const t = new Date(str)
+        const WEEK_MAP = [
+          "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"
+        ]
         return `
-        Day: ${day} \n
+        repo: ${params.seriesName}\n
+        Day: ${t.getMonth() + 1}-${t.getDate()} \n
         Hour: ${hour} \n
-        stamp: ${str}
+        ${WEEK_MAP[t.getDay()]}
         `;
       }
     },
@@ -64,15 +94,18 @@ axios.get('./data.json').then(({data}) => {
     },
     xAxis: {
         type: 'category',
+        splitArea: {
+          show: true,
+          interval: function(index, val) {
+            return index % 7 > 5
+          }
+        },
         data: days,
         axisLine: {
             show: false
         }
     },
-    series: [{
-        type: 'scatter',
-        data: seriesData,
-    }]
+    series: seriesData
   };
 
   const [w, h] = [document.body.clientWidth, 800]
