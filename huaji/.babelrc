@@ -1,5 +1,0 @@
-{
-  "presets": [
-    ["env", {"targets": {"browsers": ["cover 99.5%"]}}]
-  ]
-}

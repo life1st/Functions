@@ -1,10 +1,10 @@
-import Canvas from './canvas'
+import CanvasUtil from './canvas'
 import Huaji from './huaji'
 import { getParams, randomNum} from "./utils";
 import huajiImg from '../imgs/huaji.png'
 
 let el = document.querySelector('#huajiWrap')
-let canvas = new Canvas(el)
+let canvas = new CanvasUtil(el)
 canvas.setSize(document.body.clientWidth, document.body.clientHeight)
 
 let params = getParams()

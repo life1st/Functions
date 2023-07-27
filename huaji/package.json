@@ -2,7 +2,6 @@
   "name": "huaji",
   "version": "1.0.0",
   "description": "huaji canvas",
-  "main": "script/main.js",
   "scripts": {
     "start": "parcel index.html",
     "build": "parcel build index.html --public-url /Functions/huaji/dist/"
@@ -13,9 +12,7 @@
   ],
   "author": "life1st",
   "license": "WTFPL",
-  "devDependencies": {
-    "babel-core": "^6.26.3",
-    "babel-preset-env": "^1.7.0",
-    "parcel": "^1.12.4"
+  "dependencies": {
+    "parcel": "^2.9.3"
   }
 }
